@@ -4,15 +4,16 @@ using osu.Game.Rulesets.Objects.Types;
 
 namespace UnbeatableConverter.Core.Beatmap;
 
+public enum NoteModifier
+{
+    Normal,
+    Spike,
+    Double,
+    Zoom
+}
+
 public static class ModifierExtension
 {
-    public enum NoteModifier
-    {
-        Normal,
-        Spike,
-        Double
-    }
-
     struct ModifierInfo
     {
         public string Sample;
@@ -22,11 +23,12 @@ public static class ModifierExtension
     {
         { NoteModifier.Normal, new ModifierInfo { Sample = HitSampleInfo.HIT_WHISTLE } },
         { NoteModifier.Spike, new ModifierInfo { Sample = HitSampleInfo.HIT_CLAP } },
-        { NoteModifier.Double, new ModifierInfo { Sample = HitSampleInfo.HIT_WHISTLE } }
+        { NoteModifier.Double, new ModifierInfo { Sample = HitSampleInfo.HIT_WHISTLE } },
+        { NoteModifier.Zoom, new ModifierInfo { Sample = HitSampleInfo.HIT_WHISTLE } }
     };
 
 
-    public static void ApplyModifier(HitObject hitObject, NoteModifier modifier)
+    public static void ApplyModifier(this HitObject hitObject, NoteModifier modifier)
     {
         hitObject.Samples.Clear();
 
