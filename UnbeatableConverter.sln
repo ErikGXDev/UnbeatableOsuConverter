@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.Core", "UnbeatableConverter.Core\UnbeatableConverter.Core.csproj", "{336A5B4A-E688-4377-A1CA-E1B091A32E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.CLI", "UnbeatableConverter.CLI\UnbeatableConverter.CLI.csproj", "{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.GUI", "UnbeatableConverter.GUI\UnbeatableConverter.GUI.csproj", "{8D31F031-BC92-47C9-9F05-08C263B1518E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{336A5B4A-E688-4377-A1CA-E1B091A32E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336A5B4A-E688-4377-A1CA-E1B091A32E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336A5B4A-E688-4377-A1CA-E1B091A32E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336A5B4A-E688-4377-A1CA-E1B091A32E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
