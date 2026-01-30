@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="ppy.osu.Game">
+            <HintPath>lib\osu.Game.dll</HintPath>
+        </Reference>
+        <Reference Include="ppy.osu.Game.Rulesets.Mania">
+            <HintPath>lib\osu.Game.Rulesets.Mania.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>
