@@ -7,5 +7,7 @@ class Program
     static void Main(string[] args)
     {
         //ExampleExport.Run();
+        //KiaiDebug.Run();
+        HitObjectTypes.Run();
     }
 }
