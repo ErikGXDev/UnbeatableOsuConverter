@@ -1,6 +1,5 @@
 ﻿using osu.Game.Audio;
 using osu.Game.Rulesets.Objects;
-using osu.Game.Rulesets.Objects.Types;
 
 namespace UnbeatableConverter.Core.Beatmap;
 
