@@ -11,8 +11,8 @@ public class KiaiDebug
     {
         Console.WriteLine("Debug Program Running...");
 
-        var inputPath = @"C:\Users\Anwender\Downloads\2425769 Good Kid - No Time to Explain (Cut Ver.).osz";
-        var entryFile = "Good Kid - No Time to Explain (Cut Ver.) (keksikosu) [Normal].osu";
+        var inputPath = @"C:\Users\Anwender\Downloads\1861042 Hinkik - Explorers.osz";
+        var entryFile = "Hinkik - Explorers (Nytrocide_) [Flowziee's Hard].osu";
 
         using var zipStream = ZipFile.OpenRead(inputPath);
 
