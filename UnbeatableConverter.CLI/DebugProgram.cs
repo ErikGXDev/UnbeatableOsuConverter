@@ -1,9 +1,11 @@
-﻿using UnbeatableConverter.Core;
+﻿using System.Diagnostics;
+using UnbeatableConverter.Core;
 
 namespace UnbeatableConverter.CLI;
 
 public class DebugProgram
 {
+    [Conditional("DEBUG")]
     public static void MainRun(string[] args)
     {
         Console.WriteLine("Debug Program Running...");
