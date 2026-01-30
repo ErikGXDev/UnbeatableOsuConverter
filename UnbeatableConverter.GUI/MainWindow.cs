@@ -85,19 +85,17 @@ namespace UnbeatableConverter.GUI
             {
                 var inputPath = filePicker.Filename;
 
-                // TODO: Optimize indentation
-                if (!string.IsNullOrEmpty(inputPath))
+                if (string.IsNullOrEmpty(inputPath))
                 {
-                    if (selection.GetSelected(out ITreeModel model, out TreeIter iter))
-                    {
-                        _selectedEntry = (string)model.GetValue(iter, 1);
+                    tryBeatmaps.Sensitive = false;
+                    return;
+                }
 
-                        tryBeatmaps.Sensitive = true;
-                    }
-                    else
-                    {
-                        tryBeatmaps.Sensitive = false;
-                    }
+                if (selection.GetSelected(out ITreeModel model, out TreeIter iter))
+                {
+                    _selectedEntry = (string)model.GetValue(iter, 1);
+
+                    tryBeatmaps.Sensitive = true;
                 }
                 else
                 {
