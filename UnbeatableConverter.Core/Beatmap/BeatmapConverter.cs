@@ -18,10 +18,7 @@ public class BeatmapConverter
         var decoder = new LegacyBeatmapDecoder();
         var beatmap = decoder.Decode(osuReader);
 
-        if (beatmap.BeatmapInfo.Ruleset.OnlineID == 3)
-        {
-            throw new InvalidOperationException("osu!mania beatmaps are broken right now.");
-        }
+        var wasManiaBefore = beatmap.BeatmapInfo.Ruleset.OnlineID == 3;
 
         // Fix key, change mode
         beatmap.Difficulty.CircleSize = 5;
@@ -38,6 +35,14 @@ public class BeatmapConverter
         var convertedBeatmap = converter.Convert() as ManiaBeatmap ??
                                throw new InvalidOperationException("Conversion to ManiaBeatmap failed.");
 
+        // Mania beatmaps tend to have overlapping notes when compressed to
+        // 2 keys, so we need to remove duplicates here.
+        if (wasManiaBefore)
+        {
+            var duplicateRemover = new DuplicateRemover();
+            duplicateRemover.Convert(convertedBeatmap);
+        }
+
         foreach (var hitObject in convertedBeatmap.HitObjects)
         {
             hitObject.Samples.Clear();
@@ -45,6 +50,11 @@ public class BeatmapConverter
             // NOTE: Columns start at 0, so Column 2 and 3 are the center
             hitObject.Column += 2; // Shift to center columns
         }
+
+
+        // TODO: Separate class for this?
+
+        // TODO: Add spikes and double notes based on original beatmap
 
 
         // TODO: Add flips during kiai time
@@ -101,6 +111,8 @@ public class BeatmapConverter
                 convertedBeatmap.HitObjects.Add(zoomEndObject);
             }
         }
+
+        convertedBeatmap.HitObjects.Sort((a, b) => a.StartTime.CompareTo(b.StartTime));
 
         return convertedBeatmap;
     }
