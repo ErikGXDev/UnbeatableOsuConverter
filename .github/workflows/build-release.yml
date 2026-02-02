@@ -1,0 +1,103 @@
+﻿name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
+        include:
+          - os: ubuntu-latest
+            rid: linux-x64
+            platform: linux
+          - os: windows-latest
+            rid: win-x64
+            platform: windows
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore UnbeatableConverter.sln
+
+      - name: Build Core
+        run: dotnet build UnbeatableConverter.Core/UnbeatableConverter.Core.csproj -c Release --no-restore
+
+      - name: Publish CLI
+        run: dotnet publish UnbeatableConverter.CLI/UnbeatableConverter.CLI.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish/cli
+
+      - name: Publish GUI
+        run: dotnet publish UnbeatableConverter.GUI/UnbeatableConverter.GUI.csproj -c Release -r ${{ matrix.rid }} --self-contained true -p:PublishSingleFile=false -o ./publish/gui
+
+      - name: Create CLI release package (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cd publish/cli
+          zip -r ../../unbeatable-converter-cli-${{ matrix.platform }}-x64.zip *
+
+      - name: Create GUI release package (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          cd publish/gui
+          zip -r ../../unbeatable-converter-gui-${{ matrix.platform }}-x64.zip *
+
+      - name: Create CLI release package (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: powershell
+        run: |
+          Compress-Archive -Path "publish/cli/*" -DestinationPath "unbeatable-converter-cli-${{ matrix.platform }}-x64.zip"
+
+      - name: Create GUI release package (Windows)
+        if: matrix.os == 'windows-latest'
+        shell: powershell
+        run: |
+          Compress-Archive -Path "publish/gui/*" -DestinationPath "unbeatable-converter-gui-${{ matrix.platform }}-x64.zip"
+
+      - name: Upload CLI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: unbeatable-converter-cli-${{ matrix.platform }}-x64
+          path: unbeatable-converter-cli-${{ matrix.platform }}-x64.zip
+
+      - name: Upload GUI artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: unbeatable-converter-gui-${{ matrix.platform }}-x64
+          path: unbeatable-converter-gui-${{ matrix.platform }}-x64.zip
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Display structure of downloaded files
+        run: ls -R artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/**/*.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
