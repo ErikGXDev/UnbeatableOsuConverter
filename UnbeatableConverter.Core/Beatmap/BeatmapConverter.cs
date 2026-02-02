@@ -1,4 +1,5 @@
-﻿using osu.Game.Beatmaps.Formats;
+﻿using osu.Game.Beatmaps.ControlPoints;
+using osu.Game.Beatmaps.Formats;
 using osu.Game.IO;
 using osu.Game.Rulesets;
 using osu.Game.Rulesets.Mania;
@@ -59,10 +60,12 @@ public class BeatmapConverter
 
         // TODO: Add flips during kiai time
         var controlPoints = convertedBeatmap.ControlPointInfo;
-        var kiaiPoints = controlPoints.EffectPoints;
-        for (var i = 0; i < kiaiPoints.Count; i++)
+
+        var effectPoints = controlPoints.EffectPoints;
+
+        for (var i = 0; i < effectPoints.Count; i++)
         {
-            var kiaiPoint = kiaiPoints[i];
+            var kiaiPoint = effectPoints[i];
             if (kiaiPoint.KiaiMode)
             {
                 // Get nearest beat
@@ -76,26 +79,27 @@ public class BeatmapConverter
                 var zoomStartObject = new Note()
                 {
                     StartTime = zoomStart,
+                    Column = 4
                 };
                 zoomStartObject.ApplyModifier(NoteModifier.Zoom);
-                zoomStartObject.Column = 4; // 5th Column for camera controls
 
                 // Place zoom end
-                var kiaiEndTime = (i + 1 < kiaiPoints.Count)
-                    ? kiaiPoints[i + 1].Time
-                    : beatmap.HitObjects.Last().GetEndTime();
+                var kiaiEndTime = (i + 1 < effectPoints.Count)
+                    ? effectPoints[i + 1].Time
+                    : convertedBeatmap.HitObjects.Last().GetEndTime();
 
                 var zoomEnd = controlPoints.GetClosestSnappedTime(kiaiEndTime) + timingPoint.BeatLength;
                 var zoomEndObject = new Note()
                 {
                     StartTime = zoomEnd,
+                    Column = 4
                 };
                 zoomEndObject.ApplyModifier(NoteModifier.Zoom);
-                zoomEndObject.Column = 4;
 
 
                 // Add flips every 4 beats during kiai
-                for (double t = time; t < kiaiEndTime; t += timingPoint.BeatLength * 4)
+                var flipGap = timingPoint.BeatLength * 4;
+                for (double t = time + flipGap; t < kiaiEndTime; t += flipGap)
                 {
                     var flipObject = new Note()
                     {
@@ -117,7 +121,7 @@ public class BeatmapConverter
         return convertedBeatmap;
     }
 
-    /// Encode the ManiaBeatmap for output.
+    /// Encode a ManiaBeatmap into a Stream.
     /// Returns a Stream containing the encoded beatmap data. (Position set to 0)
     /// The caller is responsible for disposing the returned Stream.
     public Stream EncodeBeatmap(ManiaBeatmap beatmap)

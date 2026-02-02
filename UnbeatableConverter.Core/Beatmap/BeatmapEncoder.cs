@@ -8,9 +8,14 @@ public class BeatmapEncoder : LegacyBeatmapEncoder
 {
     public BeatmapEncoder(IBeatmap beatmap) : base(beatmap, null)
     {
+        foreach (var hitObject in beatmap.HitObjects)
+        {
+            hitObject.StartTime = Math.Round(hitObject.StartTime);
+        }
+
         foreach (TimingControlPoint tcp in beatmap.ControlPointInfo.TimingPoints.ToList())
         {
-            //tcp.Time = Math.Floor(tcp.Time);
+            tcp.Time = Math.Round(tcp.Time);
         }
     }
 
