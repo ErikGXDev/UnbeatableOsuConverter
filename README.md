@@ -1,14 +1,15 @@
 ﻿# Osu to Unbeatable Converter
 
-Convert your Osu! beatmaps into Unbeatable maps!
+Convert your Osu! beatmaps into Unbeatable maps! (e.g. downloaded from https://osu.ppy.sh/beatmapsets)
 
 ## Features
 
-- Use a friendly GUI to convert your Osu! maps. (Downloaded from https://osu.ppy.sh/beatmapsets)
+- Use a friendly GUI to convert your Osu! maps.
 - Alternatively, do it quickly via command line.
-- Converts Osu! `.osz` files into an Unbeatable map.
+- Compatible with `.osz` files.
 - Supports all Osu! game modes (Standard, Taiko, Catch, Mania)
 - Adds decorations (like flips) according to the original map
+- Exports maps into a game-compatible [CustomBeatmaps Package](https://github.com/unbeatable-modding/CustomBeatmapsV5)
 
 ## Installation
 
@@ -45,4 +46,12 @@ They are either marked with "GUI" or "CLI" in the release name.
 UnbeatableConverter.CLI.exe "path\to\beatmap.osz"
 ```
 
+or drag and drop the `.osz` file onto the executable.
+
 This will convert the specified Osu! beatmap and save the output in the same directory.
+
+## Credits
+
+Conversion, encoding and more based on [osu!](https://github.com/ppy/osu) (MIT License).
+
+GUI made with [GtkSharp](https://github.com/GtkSharp/GtkSharp).
