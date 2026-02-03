@@ -18,6 +18,10 @@ Convert your Osu! beatmaps into Unbeatable maps!
 
 ## Installation
 
+> [!NOTE]
+> Make sure you have the [.NET 10 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) installed.
+
+
 Depending on your needs, you can install an interactive GUI version or a command-line version.
 
 They are either marked with "GUI" or "CLI" in the release name.
