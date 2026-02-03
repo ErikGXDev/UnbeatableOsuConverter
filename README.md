@@ -42,6 +42,8 @@ They are either marked with "GUI" or "CLI" in the release name.
 
 ## CLI Usage
 
+Use the CLI from a terminal like so:
+
 ```powershell
 UnbeatableConverter.CLI.exe "path\to\beatmap.osz"
 ```
