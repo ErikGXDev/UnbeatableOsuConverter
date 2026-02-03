@@ -7,6 +7,12 @@ class Program
 {
     static void Main(string[] args)
     {
+        if (args.Length < 1)
+        {
+            Console.WriteLine("Usage: UnbeatableConverter.CLI <input.osz>");
+            return;
+        }
+
         var inputPath = args[0];
 
         if (!File.Exists(inputPath))
