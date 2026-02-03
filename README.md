@@ -10,12 +10,6 @@ Convert your Osu! beatmaps into Unbeatable maps!
 - Supports all Osu! game modes (Standard, Taiko, Catch, Mania)
 - Adds decorations (like flips) according to the original map
 
-## Planned Features
-
-- Customizable conversion settings
-- (both in GUI and CLI)
-- Add decorations like spikes, pink notes etc. smartly
-
 ## Installation
 
 > [!NOTE]
