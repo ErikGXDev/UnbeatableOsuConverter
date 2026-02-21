@@ -16,9 +16,11 @@ jobs:
           - os: ubuntu-latest
             rid: linux-x64
             platform: linux
+            gui_project: UnbeatableConverter.GUI/UnbeatableConverter.GUI.Gtk/UnbeatableConverter.GUI.Gtk.csproj
           - os: windows-latest
             rid: win-x64
             platform: windows
+            gui_project: UnbeatableConverter.GUI/UnbeatableConverter.GUI.Wpf/UnbeatableConverter.GUI.Wpf.csproj
 
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +40,7 @@ jobs:
         run: dotnet publish UnbeatableConverter.CLI/UnbeatableConverter.CLI.csproj -c Release -r ${{ matrix.rid }} --self-contained false -o ./publish/cli
 
       - name: Publish GUI
-        run: dotnet publish UnbeatableConverter.GUI/UnbeatableConverter.GUI.csproj -c Release -r ${{ matrix.rid }} --self-contained false -o ./publish/gui
+        run: dotnet publish ${{ matrix.gui_project }} -c Release -r ${{ matrix.rid }} --self-contained false -o ./publish/gui
 
       - name: Create CLI release package (Linux)
         if: matrix.os == 'ubuntu-latest'
