@@ -4,9 +4,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.Core", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.CLI", "UnbeatableConverter.CLI\UnbeatableConverter.CLI.csproj", "{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.GUI", "UnbeatableConverter.GUI\UnbeatableConverter.GUI.csproj", "{8D31F031-BC92-47C9-9F05-08C263B1518E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.Playground", "UnbeatableConverter.Playground\UnbeatableConverter.Playground.csproj", "{DB86B0CF-F6F1-46F4-A4FB-D35285E0E789}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.GUI", "UnbeatableConverter.GUI\UnbeatableConverter.GUI\UnbeatableConverter.GUI.csproj", "{31661771-A7EF-4E9B-B4A7-879D2E4118E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.GUI.Gtk", "UnbeatableConverter.GUI\UnbeatableConverter.GUI.Gtk\UnbeatableConverter.GUI.Gtk.csproj", "{ADB4EB13-7203-4736-97E3-62840C9B508E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnbeatableConverter.GUI.Wpf", "UnbeatableConverter.GUI\UnbeatableConverter.GUI.Wpf\UnbeatableConverter.GUI.Wpf.csproj", "{20FFECF8-C680-4184-B717-890F3580EAED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,13 +26,21 @@ Global
 		{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C064C0C4-1ED2-4AFD-9138-BAEDC4F13041}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D31F031-BC92-47C9-9F05-08C263B1518E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB86B0CF-F6F1-46F4-A4FB-D35285E0E789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DB86B0CF-F6F1-46F4-A4FB-D35285E0E789}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB86B0CF-F6F1-46F4-A4FB-D35285E0E789}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB86B0CF-F6F1-46F4-A4FB-D35285E0E789}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31661771-A7EF-4E9B-B4A7-879D2E4118E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31661771-A7EF-4E9B-B4A7-879D2E4118E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31661771-A7EF-4E9B-B4A7-879D2E4118E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31661771-A7EF-4E9B-B4A7-879D2E4118E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADB4EB13-7203-4736-97E3-62840C9B508E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB4EB13-7203-4736-97E3-62840C9B508E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB4EB13-7203-4736-97E3-62840C9B508E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB4EB13-7203-4736-97E3-62840C9B508E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20FFECF8-C680-4184-B717-890F3580EAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20FFECF8-C680-4184-B717-890F3580EAED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20FFECF8-C680-4184-B717-890F3580EAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20FFECF8-C680-4184-B717-890F3580EAED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
